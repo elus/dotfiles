@@ -1,0 +1,13 @@
+# Write your default config options here!
+
+alang=en,pl
+slang=pl
+
+vf=eq2,hue,scale
+
+fontconfig=1
+subcp=cp1250
+subfont-text-scale=2.8
+subfont-outline=2
+font="Helvetica Neue"
+#sub-fuzziness=2
