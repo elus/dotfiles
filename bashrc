@@ -6,6 +6,7 @@ fi
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
+export QMAKESPEC=/usr/local/Qt4.7/mkspecs/macx-g++
 # export PYTHONPATH=$PYTHONPATH:$HOME/dev/site-packages/
 
 export EDITOR=emacs
