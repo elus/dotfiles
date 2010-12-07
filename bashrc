@@ -3,7 +3,7 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
 export QMAKESPEC=/usr/local/Qt4.7/mkspecs/macx-g++
@@ -26,13 +26,34 @@ PS1='[\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]]\$ '
 if [ "$TERM" != "dumb" ]; then
     #eval "`dircolors -b`"
     whichls=`which ls`
-    if [ "$whichls" = "/opt/local/bin/ls" ]; then
+    if [ "$whichls" = "/opt/local/libexec/gnubin/ls" ]; then
         alias ls='ls --color=auto --group-directories-first'
     elif [ "$whichls" = "/bin/ls" ]; then
         alias ls='ls -G'
     fi
     alias grep='grep --color=auto'
 fi
+
+# easy unpacking
+unp() {
+    if [ x == x$1 ]; then
+        echo 'usage: unp [filename]'
+    elif [ -f "$1" ]; then
+        case "$1" in
+            *.tar.gz)          tar xvzf "$1" ;;
+            *.tgz)             tar xvzf "$1" ;;
+            *.tar.bz2)         tar xvjf "$1" ;;
+            *.gz)              gunzip "$1" ;;
+            *.bz2)             bunzip2 "$1" ;;
+            *.tar)             tar zvf "$1" ;;
+            *.zip|*.egg|*.jar) unzip "$1" ;;
+            *) echo "'$1' is an unknown archive" ;;
+        esac
+    else
+        echo "'$1' is not a valid archive"
+    fi
+}
+
 
 # place your aliases below:
 alias clc='clear'
