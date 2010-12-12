@@ -3,14 +3,17 @@
         diff = auto
         status = auto
 [user]
-	name = Tomasz Elendt
-	email = tomasz.elendt@gmail.com
+        name = Tomasz Elendt
+        email = tomasz.elendt@gmail.com
 [github]
-	user = elus
-	token = 0fe783858e99dff232a70df162fcd041
+        user = elus
+        token = 0fe783858e99dff232a70df162fcd041
 [alias]
         ci = commit
         co = checkout
         st = status
 [core]
         excludesfile = ~/.gitignore
+        autocrlf = input
+[branch]
+        autosetupmerge = true
