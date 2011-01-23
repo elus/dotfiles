@@ -29,19 +29,19 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # place your aliases below:
-alias ..='cd ..'
+if [ -x "`which gnome-open`" ]; then
+    alias o='gnome-open'
+elif [ -x "`which kde-open`" ]; then
+    alias o='kde-open'
+elif [ -x "`which open`" ]; then
+    alias o='open'
+fi
 alias clc='clear'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-alias updatedb='sudo /usr/libexec/locate.updatedb'
 alias pyclean='find . -type f -name "*.pyc" -exec rm {} \;'
-alias whatsmyip='ifconfig | tail -12 | grep -m 1 -oP "(\d{1,3}\.){3}\d{1,3}" --color=no | tail -1'
-
 alias share='python -m SimpleHTTPServer'
-alias js='rlwrap js -version 170'
-alias rhino='java -cp js.jar:lib/jline-0.9.93.jar org.mozilla.javascript.tools.shell.Main'
-alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
 
 # UTILITY FUNCTIONS
 unp() { # easy unpacking
@@ -63,6 +63,8 @@ unp() { # easy unpacking
     fi
 }
 
+# BASH OPTIONS
+shopt -s autocd 2> /dev/null
 
 # BASH COMPLETION
 if [ -f /etc/bash_completion ]; then
@@ -86,8 +88,8 @@ complete -o default -F _pip_completion pip
 #. ~/dev/libs/django-trunk/extras/django_bash_completion
 
 # virtualenvwrapper
-if [ -x `which virtualenvwrapper.sh` ]; then
+if [ -x "`which virtualenvwrapper.sh`" ]; then
     . virtualenvwrapper.sh
-    export WORKON_HOME=$HOME/Envs
+    export WORKON_HOME=$HOME/.envs
     mkdir -p $WORKON_HOME
 fi
