@@ -1,0 +1,6 @@
+[submodule "emacs.d/yaml-mode"]
+	path = emacs.d/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "emacs.d/yasnippet"]
+	path = emacs.d/yasnippet
+	url = https://github.com/emacsmirror/yasnippet.git
