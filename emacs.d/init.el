@@ -1,6 +1,11 @@
 ;; set load-path
 (add-to-list 'load-path "~/.emacs.d")
-(progn (cd "~/.emacs.d") (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory "~/.emacs.d/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path "~/.emacs.d/python.el")
+(add-to-list 'load-path "~/.emacs.d/qml-mode")
+(add-to-list 'load-path "~/.emacs.d/yaml-mode")
+;;(progn (cd "~/.emacs.d") (normal-top-level-add-subdirs-to-load-path))
 
 ;; smooth scroll
 (setq scroll-conservatively 10000)
@@ -31,7 +36,7 @@
 ;; no tab-indenting
 (setq-default indent-tabs-mode nil)
 ;; 4-spaces
-(setq c-basic-offset 4)
+;;(setq c-basic-offset 4)
 
 ;; http://www.emacswiki.org/emacs/InteractivelyDoThings
 (require 'ido)
@@ -72,3 +77,9 @@
 ;; YAML mode
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; Python.el
+;; https://github.com/fgallina/python.el
+(require 'python)
+
+(require 'erc)

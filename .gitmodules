@@ -7,3 +7,6 @@
 [submodule "emacs.d/yaml-mode"]
 	path = emacs.d/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "emacs.d/python.el"]
+	path = emacs.d/python.el
+	url = https://github.com/fgallina/python.el.git
