@@ -7,11 +7,13 @@ fi
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
-export QMAKESPEC=/usr/local/Qt4.7/mkspecs/macx-g++
 export EDITOR=emacs
 export LESS='-R'  # ask less to handle ANSI colors
 export NNTPSERVER='news.gazeta.pl' # default newsgroup server address for slrn
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100 # UTF-8 in pbcopy
+
+export LANG="en_GB.UTF-8" # default language
+export LC_TYPE=$LANG      # babel needs that
 
 PS1='[\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]]\$ '
 
