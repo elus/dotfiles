@@ -7,7 +7,7 @@ fi
 export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
-export EDITOR=emacs
+export EDITOR='emacsclient -t -a=""'
 export LESS='-R'  # ask less to handle ANSI colors
 export NNTPSERVER='news.gazeta.pl' # default newsgroup server address for slrn
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100 # UTF-8 in pbcopy
@@ -38,6 +38,7 @@ elif [ -x "`which kde-open`" ]; then
 elif [ -x "`which open`" ]; then
     alias o='open'
 fi
+alias edit="$EDITOR"
 alias clc='clear'
 alias ll='ls -l'
 alias la='ls -A'
