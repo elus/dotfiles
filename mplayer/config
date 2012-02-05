@@ -7,7 +7,7 @@ vf=eq2,hue,scale
 
 fontconfig=1
 subcp=cp1250
-subfont-text-scale=2.8
+subfont-text-scale=3.8
 subfont-outline=2
-font="Helvetica Neue"
+#font="Helvetica Neue"
 #sub-fuzziness=2
