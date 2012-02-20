@@ -5,7 +5,13 @@
 (add-to-list 'load-path "~/.emacs.d/python.el")
 (add-to-list 'load-path "~/.emacs.d/qml-mode")
 (add-to-list 'load-path "~/.emacs.d/yaml-mode")
+(add-to-list 'load-path "~/.emacs.d/puppet")
 ;;(progn (cd "~/.emacs.d") (normal-top-level-add-subdirs-to-load-path))
+
+;; mouse support
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e))
 
 ;; smooth scroll
 (setq scroll-conservatively 10000)
@@ -77,6 +83,10 @@
 ;; YAML mode
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; puppet-mode
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
 ;; Python.el
 ;; https://github.com/fgallina/python.el
