@@ -1,0 +1,3 @@
+[submodule "emacs.d/elisp/puppet-syntax-emacs"]
+	path = emacs.d/elisp/puppet-syntax-emacs
+	url = https://github.com/lurdan/puppet-syntax-emacs.git

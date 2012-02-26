@@ -5,6 +5,8 @@
 ;;; packages in your .emacs.
 
 (add-to-list 'load-path "~/.emacs.d")
+(let ((default-directory "~/.emacs.d/elisp/"))
+        (normal-top-level-add-subdirs-to-load-path))
 
 ;; smooth scroll
 (setq scroll-conservatively 10000)
@@ -81,10 +83,6 @@
 (add-hook 'python-mode-hook 'whitespace-mode)
 
 ;; NORMALIZE WHITESPACES
-;; untabify some modes
-;(setq elus/whitespace-fix-modes
-;      '(html-mode sh-mode python-mode css-mode less-css-mode javascript-mode))
-
 (defun elus/fix-whitespaces-hook ()
   (when (member major-mode '(html-mode
                              sh-mode
@@ -101,3 +99,7 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+(require 'puppet-mode)
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
