@@ -1,17 +1,10 @@
-;; set load-path
-(add-to-list 'load-path "~/.emacs.d")
-(let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
-(add-to-list 'load-path "~/.emacs.d/python.el")
-(add-to-list 'load-path "~/.emacs.d/qml-mode")
-(add-to-list 'load-path "~/.emacs.d/yaml-mode")
-(add-to-list 'load-path "~/.emacs.d/puppet")
-;;(progn (cd "~/.emacs.d") (normal-top-level-add-subdirs-to-load-path))
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
 
-;; mouse support
-(require 'mouse)
-(xterm-mouse-mode t)
-(defun track-mouse (e))
+(add-to-list 'load-path "~/.emacs.d")
 
 ;; smooth scroll
 (setq scroll-conservatively 10000)
@@ -55,13 +48,14 @@
 
 ;; line-numbers
 (add-hook 'find-file-hook (lambda () (linum-mode 1)))
+
 (setq linum-format (lambda (line)
    (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
 			    (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+
 ;; goto-line shortcut
 (define-key global-map (kbd "M-g") 'goto-line)
  
-
 ;; Copy & Paste + Mac Clipboard
 ;; http://blog.lathi.net/articles/2007/11/07/sharing-the-mac-clipboard-with-emacs
 (defun copy-from-osx ()
@@ -76,20 +70,34 @@
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
 
-;; QML mode
-(require 'qml-mode)
-(add-to-list 'auto-mode-alist '("\\.qml\\'" . qml-mode))
 
-;; YAML mode
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;; WHITESPACES
+(setq whitespace-style '(trailing indentation::space))
 
-;; puppet-mode
-(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
-(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+(add-hook 'js-mode-hook 'whitespace-mode)
+(add-hook 'sh-mode-hook 'whitespace-mode)
+(add-hook 'css-mode-hook 'whitespace-mode)
+(add-hook 'html-mode-hook 'whitespace-mode)
+(add-hook 'python-mode-hook 'whitespace-mode)
 
-;; Python.el
-;; https://github.com/fgallina/python.el
-(require 'python)
+;; NORMALIZE WHITESPACES
+;; untabify some modes
+;(setq elus/whitespace-fix-modes
+;      '(html-mode sh-mode python-mode css-mode less-css-mode javascript-mode))
 
-(require 'erc)
+(defun elus/fix-whitespaces-hook ()
+  (when (member major-mode '(html-mode
+                             sh-mode
+                             python-mode
+                             css-mode
+                             less-css-mode
+                             js-mode))
+    (untabify (point-min) (point-max))
+    (set-buffer-file-coding-system 'undecided-unix)
+    (delete-trailing-whitespace)))
+
+(add-hook 'before-save-hook 'elus/fix-whitespaces-hook)
+
+(require 'package)
+(package-initialize)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
