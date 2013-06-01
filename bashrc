@@ -4,7 +4,9 @@ if [[ $- != *i* ]] ; then
 fi
 
 # VARIABLES
-export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:$PATH
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export MAVEN_OPTS="-Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
+export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/libexec/awk:/opt/local/libexec/git-core:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$HOME/bin:$PATH
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
 export EDITOR='emacsclient -t -a=""'
@@ -94,5 +96,7 @@ complete -o default -F _pip_completion pip
 if [ -x "`which virtualenvwrapper.sh`" ]; then
     . virtualenvwrapper.sh
     export WORKON_HOME=$HOME/.envs
-    mkdir -p $WORKON_HOME
+    export PROJECT_HOME=$HOME/Projects
 fi
+
+[[ -s /Users/telendt/.nvm/nvm.sh ]] && . /Users/telendt/.nvm/nvm.sh # This loads NVM
