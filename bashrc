@@ -4,9 +4,8 @@ if [[ $- != *i* ]] ; then
 fi
 
 # VARIABLES
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export MAVEN_OPTS="-Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m"
-export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/libexec/awk:/opt/local/libexec/git-core:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$HOME/bin:$PATH
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export PATH=~/Library/Python/3.4/bin:/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/libexec/awk:/opt/local/libexec/git-core:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin:$HOME/bin:$PATH
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
 export EDITOR='emacsclient -t -a=""'
@@ -15,7 +14,7 @@ export NNTPSERVER='news.gazeta.pl' # default newsgroup server address for slrn
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100 # UTF-8 in pbcopy
 
 export LANG="en_GB.UTF-8" # default language
-export LC_TYPE=$LANG      # babel needs that
+export LC_ALL=$LANG       # babel needs that
 
 PS1='[\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]]\$ '
 
@@ -99,4 +98,4 @@ if [ -x "`which virtualenvwrapper.sh`" ]; then
     export PROJECT_HOME=$HOME/Projects
 fi
 
-[[ -s /Users/telendt/.nvm/nvm.sh ]] && . /Users/telendt/.nvm/nvm.sh # This loads NVM
+[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh # This loads NVM
