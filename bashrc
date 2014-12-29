@@ -5,16 +5,20 @@ fi
 
 # VARIABLES
 export JAVA_HOME="$(/usr/libexec/java_home)"
-export PATH=~/Library/Python/3.4/bin:/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/libexec/awk:/opt/local/libexec/git-core:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/go/bin:$HOME/bin:$PATH
+export PATH=$HOME/local/bin:$HOME/.gem/ruby/2.1.0/bin:$HOME/Library/Python/3.4/bin:$HOME/Library/Python/2.7/bin/:/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/local/libexec/gnubin:/opt/local/libexec/awk:/opt/local/libexec/git-core:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
+
 export MANPATH=/opt/local/man:/opt/local/share/man:$MANPATH
 export INFOPATH=$INFOPATH:/opt/local/share/info
-export EDITOR='emacsclient -t -a=""'
+export EDITOR='emacs'
 export LESS='-R'  # ask less to handle ANSI colors
 export NNTPSERVER='news.gazeta.pl' # default newsgroup server address for slrn
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100 # UTF-8 in pbcopy
 
 export LANG="en_GB.UTF-8" # default language
 export LC_ALL=$LANG       # babel needs that
+
+export GOPATH=$HOME/goprojects
+export PATH=$PATH:$GOPATH/bin
 
 PS1='[\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]]\$ '
 
@@ -46,6 +50,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias pyclean='find . -type f -name "*.pyc" -exec rm {} \;'
 alias share='python -m SimpleHTTPServer'
+alias knife='bundle exec knife'
 
 # UTILITY FUNCTIONS
 unp() { # easy unpacking
